@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1734655355">
+  <File Type="PA-TCL" Name="pong3ds.tcl"/>
+  <File Type="REPORTS-TCL" Name="pong3ds_reports.tcl"/>
+  <File Type="INIT-TIMING" Name="pong3ds_timing_summary_init.rpt"/>
+  <File Type="OPT-DCP" Name="pong3ds_opt.dcp"/>
+  <File Type="OPT-DRC" Name="pong3ds_drc_opted.rpt"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="pong3ds_methodology_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="pong3ds.hwdef"/>
+  <File Type="OPT-TIMING" Name="pong3ds_timing_summary_opted.rpt"/>
+  <File Type="OPT-RQA-PB" Name="pong3ds_rqa_opted.pb"/>
+  <File Type="PWROPT-DCP" Name="pong3ds_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="pong3ds_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="pong3ds_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="pong3ds_placed.dcp"/>
+  <File Type="PLACE-IO" Name="pong3ds_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="pong3ds_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="pong3ds_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="pong3ds_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="pong3ds_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="pong3ds_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="pong3ds_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-TIMING" Name="pong3ds_timing_summary_placed.rpt"/>
+  <File Type="PLACE-RQA-PB" Name="pong3ds_rqa_placed.pb"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="pong3ds_postplace_pwropt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="pong3ds_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="pong3ds_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="pong3ds_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-TIMING" Name="pong3ds_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="pong3ds_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="pong3ds_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="pong3ds_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="pong3ds_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="pong3ds_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="pong3ds_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="pong3ds_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="pong3ds_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="pong3ds_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="pong3ds_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="pong3ds_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="pong3ds_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="pong3ds_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="pong3ds_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="pong3ds_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="pong3ds_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="pong3ds_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="pong3ds_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="pong3ds_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="pong3ds_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="pong3ds_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="pong3ds_bus_skew_routed.rpx"/>
+  <File Type="ROUTE-RQS-PB" Name="pong3ds_rqs_routed.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="pong3ds_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="pong3ds_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="pong3ds_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="pong3ds_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="pong3ds_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="pong3ds_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="pong3ds_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="pong3ds_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BG-BIT" Name="pong3ds.bit"/>
+  <File Type="BG-BIN" Name="pong3ds.bin"/>
+  <File Type="BITSTR-MSK" Name="pong3ds.msk"/>
+  <File Type="BITSTR-RBT" Name="pong3ds.rbt"/>
+  <File Type="BITSTR-NKY" Name="pong3ds.nky"/>
+  <File Type="BITSTR-BMM" Name="pong3ds_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="pong3ds.mmi"/>
+  <File Type="PDI-FILE" Name="pong3ds.pdi"/>
+  <File Type="BOOT-PDI-FILE" Name="pong3ds_boot.pdi"/>
+  <File Type="PL-PDI-FILE" Name="pong3ds_pld.pdi"/>
+  <File Type="RCFI_FILE" Name="pong3ds.rcfi"/>
+  <File Type="CFI_FILE" Name="pong3ds.cfi"/>
+  <File Type="RNPI_FILE" Name="pong3ds.rnpi"/>
+  <File Type="NPI_FILE" Name="pong3ds.npi"/>
+  <File Type="RBD_FILE" Name="pong3ds.rbd"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="pong3ds.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="pong3ds.sysdef"/>
+  <File Type="BG-BGN" Name="pong3ds.bgn"/>
+  <File Type="BG-DRC" Name="pong3ds.drc"/>
+  <File Type="RDI-RDI" Name="pong3ds.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="ROUTE-RQS" Name="pong3ds_routed.rqs"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS" Name="pong3ds_postroute_physopted.rqs"/>
+  <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/display_loop.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/game_loop.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/tim_25mhz_en.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/vga.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/top.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="pong3ds"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/cstr.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
+    <Filter Type="Utils"/>
+    <File Path="$PSRCDIR/utils_1/imports/synth_1/pong3ds.dcp">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedInSteps" Val="synth_1"/>
+        <Attr Name="AutoDcp" Val="1"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>

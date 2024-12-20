@@ -1,0 +1,7 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/projects/vitis-core/pong-3ds/pong-3ds.sim/sim_1/impl/timing/xsim/pong_3ds_tb_time_impl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pong3ds
+INFO: [VRFC 10-311] analyzing module tim_25mhz_en
+INFO: [VRFC 10-311] analyzing module vga
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/projects/vitis-core/pong-3ds/pong-3ds.srcs/sim_1/new/pong-3ds-tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pong_3ds_tb

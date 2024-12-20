@@ -1,0 +1,7 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"pong_3ds_tb_time_synth.v" \
+"../../../../../pong-3ds.srcs/sim_1/new/pong-3ds-tb.v" \
+
+# Do not sort compile order
+nosort
