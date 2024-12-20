@@ -74,6 +74,7 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
   /home/inomal/projects/xilinx/pong-3ds/pong-3ds.srcs/sources_1/new/display_loop.v
+  /home/inomal/projects/xilinx/pong-3ds/pong-3ds.srcs/sources_1/new/game_loop.v
   /home/inomal/projects/xilinx/pong-3ds/pong-3ds.srcs/sources_1/new/tim_25mhz_en.v
   /home/inomal/projects/xilinx/pong-3ds/pong-3ds.srcs/sources_1/new/vga.v
   /home/inomal/projects/xilinx/pong-3ds/pong-3ds.srcs/sources_1/new/top.v

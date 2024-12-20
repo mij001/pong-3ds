@@ -41,6 +41,7 @@ module game_loop  #(
     output reg signed[$clog2(D_WIDTH)+1:0] paddle_x,
     output reg signed[$clog2(D_HEIGHT)+1:0] paddle_y
     );
+    
     reg signed[$clog2(D_WIDTH)+1:0] ball_x_next;
     reg signed[$clog2(D_HEIGHT)+1:0] ball_y_next;
     reg signed[$clog2(D_WIDTH)+1:0] paddle_x_next;
@@ -132,8 +133,9 @@ module game_loop  #(
             end else if (right_hit) begin
                 x_vel_ball_next = BALL_VEL_NEG;
             end
+        end
     end
-    
+
 //    always @ (posedge clk)
 //    begin
 //        if (rst) begin
