@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date         : Sat Dec 21 02:30:25 2024
+| Date         : Sat Dec 21 02:45:19 2024
 | Host         : iNOMAL running 64-bit Fedora Linux 41 (KDE Plasma)
 | Command      : report_utilization -file pong3ds_utilization_synth.rpt -pb pong3ds_utilization_synth.pb
 | Design       : pong3ds
@@ -150,7 +150,7 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
 | LUT6     |   54 |                 LUT |
-| LUT2     |   42 |                 LUT |
+| LUT2     |   39 |                 LUT |
 | LUT5     |   31 |                 LUT |
 | FDRE     |   30 |        Flop & Latch |
 | CARRY4   |   28 |          CarryLogic |

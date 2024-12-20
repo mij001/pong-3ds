@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date         : Sat Dec 21 02:31:11 2024
+| Date         : Sat Dec 21 02:46:00 2024
 | Host         : iNOMAL running 64-bit Fedora Linux 41 (KDE Plasma)
 | Command      : report_control_sets -verbose -file pong3ds_control_sets_placed.rpt
 | Design       : pong3ds
@@ -63,7 +63,7 @@ Table of Contents
 | No           | Yes                   | No                     |               5 |            3 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              35 |           14 |
+| Yes          | Yes                   | No                     |              35 |           13 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -75,7 +75,7 @@ Table of Contents
 +----------------+------------------------------------+-----------------------------------+------------------+----------------+--------------+
 |  clk_IBUF_BUFG |                                    | rst_IBUF                          |                3 |              5 |         1.67 |
 |  clk_IBUF_BUFG |                                    |                                   |                5 |              6 |         1.20 |
-|  clk_IBUF_BUFG | display_vga/h_pixel_ctr[9]_i_1_n_0 | rst_IBUF                          |                3 |              7 |         2.33 |
+|  clk_IBUF_BUFG | display_vga/h_pixel_ctr[9]_i_1_n_0 | rst_IBUF                          |                2 |              7 |         3.50 |
 |  clk_IBUF_BUFG | display_vga/h_pixel_ctr_next[9]    | display_vga/v_line_ctr[8]_i_1_n_0 |                3 |              7 |         2.33 |
 |  clk_IBUF_BUFG | display_vga/E[0]                   | rst_IBUF                          |                8 |             21 |         2.62 |
 +----------------+------------------------------------+-----------------------------------+------------------+----------------+--------------+
