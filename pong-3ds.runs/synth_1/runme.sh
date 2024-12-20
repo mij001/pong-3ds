@@ -7,14 +7,10 @@
 # Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 # 
 
-echo "This script was generated under a different operating system."
-echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executing this script"
-exit
-
 if [ -z "$PATH" ]; then
-  PATH=D:/Xilinx/Vitis/2024.2/bin;D:/Xilinx/Vivado/2024.2/ids_lite/ISE/bin/nt64;D:/Xilinx/Vivado/2024.2/ids_lite/ISE/lib/nt64:D:/Xilinx/Vivado/2024.2/bin
+  PATH=/home/inomal/vitis-core/Vitis/2024.2/bin:/home/inomal/vitis-core/Vivado/2024.2/ids_lite/ISE/bin/lin64:/home/inomal/vitis-core/Vivado/2024.2/bin
 else
-  PATH=D:/Xilinx/Vitis/2024.2/bin;D:/Xilinx/Vivado/2024.2/ids_lite/ISE/bin/nt64;D:/Xilinx/Vivado/2024.2/ids_lite/ISE/lib/nt64:D:/Xilinx/Vivado/2024.2/bin:$PATH
+  PATH=/home/inomal/vitis-core/Vitis/2024.2/bin:/home/inomal/vitis-core/Vivado/2024.2/ids_lite/ISE/bin/lin64:/home/inomal/vitis-core/Vivado/2024.2/bin:$PATH
 fi
 export PATH
 
@@ -25,7 +21,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='D:/projects/vitis-core/pong-3ds/pong-3ds.runs/synth_1'
+HD_PWD='/home/inomal/projects/xilinx/pong-3ds/pong-3ds.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

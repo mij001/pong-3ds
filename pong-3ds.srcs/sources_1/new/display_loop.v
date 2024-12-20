@@ -29,12 +29,12 @@ module display_loop #(
     )(
     input clk,
     input rst,
-    input [$clog2(D_WIDTH)-1:0] x_coord,
-    input [$clog2(D_HEIGHT)-1:0] y_coord,
-    input signed[$clog2(D_WIDTH):0] ball_x,
-    input signed[$clog2(D_HEIGHT):0] ball_y,
-    input signed[$clog2(D_WIDTH)-1:0] paddle_x,
-    input signed[$clog2(D_HEIGHT)-1:0] paddle_y,
+    input [$clog2(D_WIDTH)+1:0] x_coord,
+    input [$clog2(D_HEIGHT)+1:0] y_coord,
+    input signed[$clog2(D_WIDTH)+1:0] ball_x,
+    input signed[$clog2(D_HEIGHT)+1:0] ball_y,
+    input signed[$clog2(D_WIDTH)+-1:0] paddle_x,
+    input signed[$clog2(D_HEIGHT)+1:0] paddle_y,
     
     output reg[3:0] red_ch_in,
     output reg[3:0] green_ch_in,
@@ -57,7 +57,7 @@ module display_loop #(
         end else begin
                 red_ch_in = BLACK;
                 green_ch_in = BLACK;
-                blue_ch_in = BLACK;
+                blue_ch_in = WHITE;
         end
     end
 endmodule

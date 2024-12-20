@@ -142,14 +142,15 @@ module vga #(
             h_vga_active = 0;
         end
         // vert vga active pulse creation
-        if (v_line_ctr == VSYNC_BEGIN && h_pixel_ctr == HSYNC_BEGIN) begin
+        if (v_line_ctr >=V_ACTIVE_BEGIN && v_line_ctr <= V_ACTIVE_END-1) begin
             v_vga_active = 1;
         end else begin
             v_vga_active = 0;
         end
         
         // frame start pulse creation
-        if (v_line_ctr == V_ACTIVE_BEGIN && v_line_ctr == V_ACTIVE_END-1) begin
+        // exactly one clock cycle per frame
+        if (tim_25mhz && v_line_ctr == VSYNC_END && h_pixel_ctr == HSYNC_END) begin
             frame_start = 1;
         end else begin
             frame_start = 0;

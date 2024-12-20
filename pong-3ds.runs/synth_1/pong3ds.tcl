@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "D:/projects/vitis-core/pong-3ds/pong-3ds.runs/synth_1/pong3ds.tcl"
+  variable script "/home/inomal/projects/xilinx/pong-3ds/pong-3ds.runs/synth_1/pong3ds.tcl"
   variable category "vivado_synth"
 }
 
@@ -56,31 +56,27 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param synth.incrementalSynthesisCache C:/Users/mayur/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-11008-iNOMAL/incrSyn
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
+set_param chipscope.maxJobs 2
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir D:/projects/vitis-core/pong-3ds/pong-3ds.cache/wt [current_project]
-set_property parent.project_path D:/projects/vitis-core/pong-3ds/pong-3ds.xpr [current_project]
+set_property webtalk.parent_dir /home/inomal/projects/xilinx/pong-3ds/pong-3ds.cache/wt [current_project]
+set_property parent.project_path /home/inomal/projects/xilinx/pong-3ds/pong-3ds.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property board_part digilentinc.com:nexys-a7-100t:part0:1.3 [current_project]
-set_property ip_output_repo d:/projects/vitis-core/pong-3ds/pong-3ds.cache/ip [current_project]
+set_property ip_output_repo /home/inomal/projects/xilinx/pong-3ds/pong-3ds.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  D:/projects/vitis-core/pong-3ds/pong-3ds.srcs/sources_1/new/display_loop.v
-  D:/projects/vitis-core/pong-3ds/pong-3ds.srcs/sources_1/new/game_loop.v
-  D:/projects/vitis-core/pong-3ds/pong-3ds.srcs/sources_1/new/tim_25mhz_en.v
-  D:/projects/vitis-core/pong-3ds/pong-3ds.srcs/sources_1/new/vga.v
-  D:/projects/vitis-core/pong-3ds/pong-3ds.srcs/sources_1/new/top.v
+  /home/inomal/projects/xilinx/pong-3ds/pong-3ds.srcs/sources_1/new/display_loop.v
+  /home/inomal/projects/xilinx/pong-3ds/pong-3ds.srcs/sources_1/new/tim_25mhz_en.v
+  /home/inomal/projects/xilinx/pong-3ds/pong-3ds.srcs/sources_1/new/vga.v
+  /home/inomal/projects/xilinx/pong-3ds/pong-3ds.srcs/sources_1/new/top.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -91,12 +87,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc D:/projects/vitis-core/pong-3ds/pong-3ds.srcs/constrs_1/new/cstr.xdc
-set_property used_in_implementation false [get_files D:/projects/vitis-core/pong-3ds/pong-3ds.srcs/constrs_1/new/cstr.xdc]
+read_xdc /home/inomal/projects/xilinx/pong-3ds/pong-3ds.srcs/constrs_1/new/cstr.xdc
+set_property used_in_implementation false [get_files /home/inomal/projects/xilinx/pong-3ds/pong-3ds.srcs/constrs_1/new/cstr.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental D:/projects/vitis-core/pong-3ds/pong-3ds.srcs/utils_1/imports/synth_1/pong3ds.dcp
+read_checkpoint -auto_incremental -incremental /home/inomal/projects/xilinx/pong-3ds/pong-3ds.srcs/utils_1/imports/synth_1/pong3ds.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

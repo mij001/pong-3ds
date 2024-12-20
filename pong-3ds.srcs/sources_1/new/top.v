@@ -18,6 +18,7 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
+//  test nedded to run (leave empty if none)
 `define SCREEN_TESTn
 
 module pong3ds #(
@@ -50,13 +51,19 @@ module pong3ds #(
     wire[$clog2(H_ACTIVE_REGION)-1:0] x_coord;
     wire[$clog2(V_ACTIVE_REGION)-1:0] y_coord;
     wire frame_start;
-    wire [3:0] red_ch;
-    wire [3:0] green_ch;
-    wire [3:0] blue_ch;
-    
+
+`ifdef SCREEN_TEST
+    // for screen testing channels are driven manually
+    reg[3:0] red_ch_in;
+    reg[3:0] green_ch_in;
+    reg[3:0] blue_ch_in;
+`else
     wire[3:0] red_ch_in;
     wire[3:0] green_ch_in;
     wire[3:0] blue_ch_in;
+`endif
+    
+
     
     vga display_vga(
                     .clk(clk), 
@@ -79,11 +86,44 @@ module pong3ds #(
     ///////// 640 x 480 display ///////////
     localparam BLACK = 0;
     localparam WHITE = 4'b1111;
-    ///////// update game loop  /////////
+
+/********* screen test *********/
+`ifdef SCREEN_TEST
+    always @ * 
+    begin
+        red_ch_in = BLACK;
+        green_ch_in = BLACK;
+        blue_ch_in = BLACK;
+        // 640 x 480 display 
+        if (x_coord >= 10 && x_coord <= 50 && y_coord >= 10 && y_coord <= 50) begin
+            red_ch_in = WHITE;
+            green_ch_in = BLACK;
+            blue_ch_in = BLACK;
+        end else begin
+            red_ch_in = BLACK;
+            green_ch_in = WHITE;
+            blue_ch_in = BLACK;
+        end
+    end  
+`endif
+/*******************************/
+
     wire[$clog2(H_ACTIVE_REGION)-1:0] ball_x;
     wire[$clog2(H_ACTIVE_REGION)-1:0] ball_y;
     wire[$clog2(H_ACTIVE_REGION)-1:0] paddle_x;
     wire[$clog2(H_ACTIVE_REGION)-1:0] paddle_y;
+/*********** ball test *********/
+`ifdef BALL_TEST
+    localparam PADDLE_WIDTH = 10;
+    localparam PADDLE_LENGTH= 150;
+    localparam BALL_RAD = 10;
+    assign ball_x = BALL_RAD*4;
+    assign ball_y = BALL_RAD*4;
+    assign paddle_x = PADDLE_WIDTH*4;
+    assign paddle_y = V_ACTIVE_REGION/2;
+`else
+/*******************************/
+    /////// update game loop  /////////
     game_loop game (
                    .clk(clk),
                    .rst(rst),
@@ -95,24 +135,9 @@ module pong3ds #(
                    .btn_up(btn_up),
                    .btn_down(btn_down)
     );
+   //////////////////////////////////////       
 
-/*********test*********/
-`ifdef SCREEN_TEST
-    always @ * 
-    begin
-        if (x_coord >= 200 && x_coord <= 300 && y_coord >= 150 && y_coord <= 250) begin
-            red_ch_in = WHITE;
-            green_ch_in = BLACK;
-            blue_ch_in = BLACK;
-        end else begin
-            red_ch_in = WHITE;
-            green_ch_in = BLACK;
-            blue_ch_in = WHITE;
-        end
-    end  
 `endif
-/**********************/
-
 `ifndef SCREEN_TEST
     display_loop blitter (
                        .clk(clk),
@@ -129,8 +154,6 @@ module pong3ds #(
                        .blue_ch_in(blue_ch_in)
     ); 
 `endif
-   //////////////////////////////////////       
-       
        
        
 //    localparam H_TOTAL = H_ACTIVE_REGION+H_FRONT_PORCH+H_SYNC_PULSE+H_BACK_PORCH;

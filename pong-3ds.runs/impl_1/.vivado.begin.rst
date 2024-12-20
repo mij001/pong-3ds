@@ -1,10 +1,30 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="mayur" Host="INOMAL" Pid="15304" HostCore="8" HostMemory="08344559616">
+    <Process Command="vivado" Owner="inomal" Host="iNOMAL" Pid="40679" HostCore="8" HostMemory="7880176">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="mayur" Host="INOMAL" Pid="972" HostCore="8" HostMemory="08344559616">
+    <Process Command="vivado" Owner="inomal" Host="iNOMAL" Pid="45024" HostCore="8" HostMemory="7880176">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado" Owner="inomal" Host="iNOMAL" Pid="50316" HostCore="8" HostMemory="7880176">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado" Owner="inomal" Host="iNOMAL" Pid="55114" HostCore="8" HostMemory="7880176">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado" Owner="inomal" Host="iNOMAL" Pid="59886" HostCore="8" HostMemory="7880176">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado" Owner="inomal" Host="iNOMAL" Pid="64698" HostCore="8" HostMemory="7880176">
     </Process>
 </ProcessHandle>
