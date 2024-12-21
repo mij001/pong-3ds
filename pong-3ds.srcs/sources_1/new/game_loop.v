@@ -24,7 +24,7 @@ module game_loop  #(
     parameter D_WIDTH = 640,
     parameter D_HEIGHT = 480,
     parameter BALL_VEL_ABS = 2,
-    parameter PADDLE_VEL_ABS = 1,
+    parameter PADDLE_VEL_ABS = 4,
     parameter WALL_WIDTH = 10,
     parameter PADDLE_WIDTH = 10,
     parameter PADDLE_LENGTH= 150,
@@ -44,8 +44,6 @@ module game_loop  #(
     
     reg signed[$clog2(D_WIDTH)+1:0] ball_x_next;
     reg signed[$clog2(D_HEIGHT)+1:0] ball_y_next;
-    reg signed[$clog2(D_WIDTH)+1:0] paddle_x_next;
-    reg signed[$clog2(D_HEIGHT)+1:0] paddle_y_next;
 
     // position control 
     localparam BALL_X_START = 320;
@@ -135,4 +133,60 @@ module game_loop  #(
             end
         end
     end
+    // paddle move 
+    reg signed[$clog2(D_WIDTH)+1:0] paddle_x_next;
+    reg signed[$clog2(D_HEIGHT)+1:0] paddle_y_next;
+    
+    always @ (posedge clk)
+    begin
+        if (rst) begin 
+            paddle_x <= PADDLE_WIDTH/2;
+            paddle_y <= D_HEIGHT/2;
+        end else begin
+            paddle_x <= paddle_x_next;
+            paddle_y <= paddle_y_next;
+        end
+    end
+    
+    wire paddle_bottom_hit;
+    wire paddle_top_hit;
+    
+    assign paddle_bottom_hit = (paddle_y > D_HEIGHT-WALL_WIDTH-PADDLE_LENGTH/2);
+    assign paddle_top_hit = (paddle_y < WALL_WIDTH+PADDLE_LENGTH/2);
+    
+    localparam PADDLE_VEL_POS = PADDLE_VEL_ABS;
+    localparam PADDLE_VEL_NEG = -1*PADDLE_VEL_ABS;
+   ////////////////////***** DEBUGED BELOW *********//////////////////////////
+    always @ *
+    begin
+        // catch all
+        paddle_x_next = paddle_x;
+        paddle_y_next = paddle_y;
+        if (frame_start) begin    
+            if (paddle_bottom_hit) begin
+                paddle_y_next = D_HEIGHT-WALL_WIDTH-PADDLE_LENGTH/2;
+            end else if (paddle_top_hit) begin
+                paddle_y_next = WALL_WIDTH+PADDLE_LENGTH/2;
+            end else if (btn_down) begin 
+                paddle_y_next = paddle_y+PADDLE_VEL_POS;
+            end else if (btn_up) begin 
+                paddle_y_next = paddle_y+PADDLE_VEL_NEG;
+            end
+        end        
+    end
+//
+////////////////////////////////////////////////////////////////////////
+
+//    always @ *
+//    begin
+//        // catch all
+//        if (frame_start) begin
+//            if (btn_up) begin
+//                paddle_y_next = paddle_y+PADDLE_VEL_NEG;
+//            end else begin
+//                paddle_y_next = paddle_y;
+//            end
+//        end        
+//    end
+    
 endmodule

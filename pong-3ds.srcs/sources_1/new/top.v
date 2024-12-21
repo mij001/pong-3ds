@@ -41,6 +41,9 @@ module pong3ds #(
     output wire [3:0] red_ch,
     output wire [3:0] green_ch,
     output wire [3:0] blue_ch
+    
+    //////////////////test 
+    , output reg led_rr
     );
     
     // clock devider - pixel_clk
@@ -155,7 +158,14 @@ module pong3ds #(
     ); 
 `endif
        
-       
+//    always @ *
+//    begin
+//        if (btn_up) begin 
+//            led_rr=1;
+//        end else begin
+//            led_rr=0;
+//        end
+//    end
 //    localparam H_TOTAL = H_ACTIVE_REGION+H_FRONT_PORCH+H_SYNC_PULSE+H_BACK_PORCH;
 //    localparam H_TOTAL_bits = $clog2(H_TOTAL);
 //    reg[H_TOTAL_bits:0] h_pixel_ctr;
