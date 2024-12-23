@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date         : Sat Dec 21 23:06:50 2024
+| Date         : Mon Dec 23 17:05:27 2024
 | Host         : iNOMAL running 64-bit Fedora Linux 41 (KDE Plasma)
 | Command      : report_control_sets -verbose -file pong3ds_control_sets_placed.rpt
 | Design       : pong3ds
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |     6 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    16 |
+| Unused register locations in slices containing registers |    19 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -41,9 +41,9 @@ Table of Contents
 +--------------------+-------+
 | Total control sets |     6 |
 | >= 0 to < 4        |     0 |
-| >= 4 to < 6        |     1 |
-| >= 6 to < 8        |     3 |
-| >= 8 to < 10       |     1 |
+| >= 4 to < 6        |     0 |
+| >= 6 to < 8        |     2 |
+| >= 8 to < 10       |     3 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               7 |            5 |
+| No           | No                    | No                     |               9 |            7 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |               5 |            3 |
-| Yes          | No                    | No                     |               9 |            3 |
+| No           | Yes                   | No                     |               9 |            4 |
+| Yes          | No                    | No                     |               8 |            2 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              35 |           15 |
+| Yes          | Yes                   | No                     |              35 |           12 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,12 +73,12 @@ Table of Contents
 +----------------+------------------------------------+-----------------------------------+------------------+----------------+--------------+
 |  Clock Signal  |            Enable Signal           |          Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------+------------------------------------+-----------------------------------+------------------+----------------+--------------+
-|  clk_IBUF_BUFG |                                    | rst_IBUF                          |                3 |              5 |         1.67 |
-|  clk_IBUF_BUFG |                                    |                                   |                5 |              7 |         1.40 |
-|  clk_IBUF_BUFG | display_vga/h_pixel_ctr_next[9]    | display_vga/v_line_ctr[8]_i_1_n_0 |                4 |              7 |         1.75 |
-|  clk_IBUF_BUFG | display_vga/h_pixel_ctr[9]_i_1_n_0 | rst_IBUF                          |                4 |              7 |         1.75 |
-|  clk_IBUF_BUFG | game/paddle_y[9]_i_1_n_0           |                                   |                3 |              9 |         3.00 |
-|  clk_IBUF_BUFG | display_vga/frame_start            | rst_IBUF                          |                7 |             21 |         3.00 |
+|  clk_IBUF_BUFG | display_vga/h_pixel_ctr_next[9]    | display_vga/v_line_ctr[8]_i_1_n_0 |                3 |              7 |         2.33 |
+|  clk_IBUF_BUFG | display_vga/h_pixel_ctr[9]_i_1_n_0 | rst_IBUF                          |                3 |              7 |         2.33 |
+|  clk_IBUF_BUFG | game/paddle_y[9]_i_1_n_0           |                                   |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG |                                    |                                   |                7 |              9 |         1.29 |
+|  clk_IBUF_BUFG |                                    | rst_IBUF                          |                4 |              9 |         2.25 |
+|  clk_IBUF_BUFG | display_vga/frame_start            | game/ball_y[10]_i_1_n_0           |                6 |             21 |         3.50 |
 +----------------+------------------------------------+-----------------------------------+------------------+----------------+--------------+
 
 

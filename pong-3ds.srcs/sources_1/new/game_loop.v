@@ -24,7 +24,7 @@ module game_loop  #(
     parameter D_WIDTH = 640,
     parameter D_HEIGHT = 480,
     parameter BALL_VEL_ABS = 2,
-    parameter PADDLE_VEL_ABS = 4,
+    parameter PADDLE_VEL_ABS = 10,
     parameter WALL_WIDTH = 10,
     parameter PADDLE_WIDTH = 10,
     parameter PADDLE_LENGTH= 150,
@@ -35,6 +35,7 @@ module game_loop  #(
     input frame_start,
     input btn_up,
     input btn_down,
+    input start_btn,
     
     output reg signed[$clog2(D_WIDTH)+1:0] ball_x,
     output reg signed[$clog2(D_HEIGHT)+1:0] ball_y,
@@ -42,12 +43,56 @@ module game_loop  #(
     output reg signed[$clog2(D_HEIGHT)+1:0] paddle_y
     );
     
+    // game state machine
+    localparam GAME_BEGIN = 3'b001;
+    localparam GAME_RUNNING = 3'b010;
+    localparam GAME_OVER = 3'b100;
+    
+    wire balls_to_the_wall;
+    reg[2:0] current_game_state, next_game_state;
+    always @(posedge clk)
+    begin
+        if (rst) begin
+            current_game_state <= GAME_BEGIN;
+        end else begin
+            current_game_state <= next_game_state;
+        end
+    end
+    
+    always @ *
+    begin
+        case (current_game_state)
+            GAME_BEGIN:
+                if (start_btn) begin
+                    next_game_state = GAME_RUNNING;
+                end else begin
+                    next_game_state = current_game_state;
+                end
+            GAME_RUNNING:
+                if (balls_to_the_wall) begin
+                    next_game_state = GAME_OVER;
+                end else begin
+                    next_game_state = current_game_state;
+                end
+            GAME_OVER:
+                if (start_btn) begin
+                    next_game_state = GAME_RUNNING;
+                end else begin
+                    next_game_state = current_game_state;
+                end
+            default:
+                next_game_state = current_game_state;
+        endcase
+    end
+    
+//////////////////////////////////////////////////////////////
+    
     reg signed[$clog2(D_WIDTH)+1:0] ball_x_next;
     reg signed[$clog2(D_HEIGHT)+1:0] ball_y_next;
 
     // position control 
     localparam BALL_X_START = 320;
-    localparam BALL_Y_START = 20;
+    localparam BALL_Y_START = 150;
     
     always @ (posedge clk)
     begin
@@ -62,7 +107,10 @@ module game_loop  #(
     
     always @ * 
     begin
-        if (frame_start) begin
+        if (current_game_state != GAME_RUNNING && next_game_state != GAME_RUNNING) begin
+            ball_x_next = BALL_X_START;
+            ball_y_next = BALL_Y_START;
+        end else if (frame_start) begin
             ball_x_next = ball_x+x_vel_ball;
             ball_y_next = ball_y+y_vel_ball; 
         end else begin
@@ -82,14 +130,12 @@ module game_loop  #(
     assign ball_left = ball_x-BALL_RAD;
     assign ball_right = ball_x+BALL_RAD;
 
-    
-    wire upper_hit, lower_hit, top_hit, bottom_hit;
-    assign upper_hit = (ball_top <= WALL_WIDTH);
-    assign lower_hit = (ball_bottom >= D_HEIGHT-WALL_WIDTH);
+    wire upper_hit = (ball_top <= WALL_WIDTH);
+    wire lower_hit = (ball_bottom >= D_HEIGHT-WALL_WIDTH);
     
     // TODO: change with paddle position later
-    assign left_hit = (ball_left <= WALL_WIDTH);
-    assign right_hit = (ball_right >= D_WIDTH-WALL_WIDTH);
+    wire left_hit = (ball_left <= WALL_WIDTH);
+    wire right_hit = (ball_right >= D_WIDTH-WALL_WIDTH);
     //////////////////////////////////////// 
     
     reg signed[$clog2(D_WIDTH)+1:0] x_vel_ball;
@@ -97,15 +143,15 @@ module game_loop  #(
     reg signed[$clog2(D_WIDTH)+1:0] x_vel_ball_next;
     reg signed[$clog2(D_HEIGHT)+1:0] y_vel_ball_next;
 
-//  localparam BARRIER_SIZE = WALL_WIDTH + BALL_RAD + 2;
+    //  localparam BARRIER_SIZE = WALL_WIDTH + BALL_RAD + 2;
     localparam BALL_VEL_POS = BALL_VEL_ABS;
     localparam BALL_VEL_NEG = -1*BALL_VEL_ABS;
     
     always @ (posedge clk)
     begin
         if (rst) begin
-            x_vel_ball <= BALL_VEL_POS;
-            y_vel_ball <= BALL_VEL_POS;
+            x_vel_ball <= 0;
+            y_vel_ball <= 0;
         end else begin
             x_vel_ball <= x_vel_ball_next;
             y_vel_ball <= y_vel_ball_next;
@@ -114,25 +160,41 @@ module game_loop  #(
     
     always @ * 
     begin
-        // catch all
-        x_vel_ball_next = x_vel_ball;
-        y_vel_ball_next = y_vel_ball; 
-        if (frame_start) begin
-            // vert direction chech
-            if (upper_hit) begin
-                y_vel_ball_next = BALL_VEL_POS;
-            end else if (lower_hit) begin
-                y_vel_ball_next = BALL_VEL_NEG;
-            end
-            
-            // horiz direction check
-            if (left_hit) begin
-                x_vel_ball_next  = BALL_VEL_POS;
-            end else if (right_hit) begin
-                x_vel_ball_next = BALL_VEL_NEG;
+        // tying reset values of the state to state trnsition itself
+        if (current_game_state != GAME_RUNNING && next_game_state != GAME_RUNNING) begin
+            x_vel_ball_next = 0;
+            y_vel_ball_next = 0;
+        end else if (current_game_state != GAME_RUNNING && next_game_state == GAME_RUNNING) begin
+            x_vel_ball_next = BALL_VEL_POS;
+            y_vel_ball_next = BALL_VEL_POS;
+        end else begin
+            // catch all
+            x_vel_ball_next = x_vel_ball;
+            y_vel_ball_next = y_vel_ball;   
+            if (frame_start) begin
+                if (current_game_state != GAME_RUNNING) begin
+                    x_vel_ball_next = 0;
+                    y_vel_ball_next = 0;
+                end else begin
+                    // vert direction chech
+                    if (upper_hit) begin
+                        y_vel_ball_next = BALL_VEL_POS;
+                    end else if (lower_hit) begin
+                        y_vel_ball_next = BALL_VEL_NEG;
+                    end
+                    
+                    // horiz direction check
+                    if (left_hit) begin
+                        x_vel_ball_next  = BALL_VEL_POS;
+                    end else if (right_hit) begin
+                        x_vel_ball_next = BALL_VEL_NEG;
+                    end
+                end
             end
         end
     end
+
+
     // paddle move 
     reg signed[$clog2(D_WIDTH)+1:0] paddle_x_next;
     reg signed[$clog2(D_HEIGHT)+1:0] paddle_y_next;
@@ -147,16 +209,19 @@ module game_loop  #(
             paddle_y <= paddle_y_next;
         end
     end
+    wire signed[$clog2(D_HEIGHT)+1:0] paddle_top;
+    wire signed[$clog2(D_HEIGHT)+1:0] paddle_bottom;
+
+    assign paddle_top = paddle_y-PADDLE_LENGTH/2;
+    assign paddle_bottom = paddle_y+PADDLE_LENGTH/2;
+    assign balls_to_the_wall = (ball_left <= WALL_WIDTH/2) && ((ball_bottom <= paddle_top+5) || (ball_top >= paddle_bottom-5));
     
-    wire paddle_bottom_hit;
-    wire paddle_top_hit;
-    
-    assign paddle_bottom_hit = (paddle_y > D_HEIGHT-WALL_WIDTH-PADDLE_LENGTH/2);
-    assign paddle_top_hit = (paddle_y < WALL_WIDTH+PADDLE_LENGTH/2);
+    wire paddle_bottom_hit = (paddle_y > D_HEIGHT-WALL_WIDTH-PADDLE_LENGTH/2);
+    wire paddle_top_hit = (paddle_y < WALL_WIDTH+PADDLE_LENGTH/2);
     
     localparam PADDLE_VEL_POS = PADDLE_VEL_ABS;
     localparam PADDLE_VEL_NEG = -1*PADDLE_VEL_ABS;
-   ////////////////////***** DEBUGED BELOW *********//////////////////////////
+   /////////////////////////////////////////////////////////////////////
     always @ *
     begin
         // catch all
@@ -174,19 +239,5 @@ module game_loop  #(
             end
         end        
     end
-//
 ////////////////////////////////////////////////////////////////////////
-
-//    always @ *
-//    begin
-//        // catch all
-//        if (frame_start) begin
-//            if (btn_up) begin
-//                paddle_y_next = paddle_y+PADDLE_VEL_NEG;
-//            end else begin
-//                paddle_y_next = paddle_y;
-//            end
-//        end        
-//    end
-    
 endmodule
